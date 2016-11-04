@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.4/nv.d3.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.4/nv.d3.min.js"></script>
+
+    <style>
+        text {
+            font: 12px sans-serif;
+        }
+        svg {
+            display: block;
+        }
+        html, body, #chart1, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="gallery" id="chart1">
+    <svg></svg>
+</div>
+
+<script>
+    nv.addGraph(function() {
+      var chart = nv.models.boxPlotChart()
+          .x(function(d) { return d.label })
+          .staggerLabels(true)
+          .maxBoxWidth(75) // prevent boxes from being incredibly wide
+          .yDomain([80, 200])
+          ;
+      d3.select('#chart1 svg')
+          .datum(exampleData())
+          .call(chart);
+      nv.utils.windowResize(chart.update);
+      return chart;
+    });
+    function exampleData() {
+     return  [{'label': '(HILL)', 'values': {'whisker_low': 111.0, 'whisker_high': 195.0, 'Q2': 148.0, 'Q3': 157.0, 'Q1': 134.0}}, 
+     {'label': '(QUAD)', 'values': {'whisker_low': 100.0, 'whisker_high': 188.0, 'Q2': 138.0, 'Q3': 156.0, 'Q1': 131.0}}, 
+     {'label': '(Tata)', 'values': {'whisker_low': 80.0, 'whisker_high': 159.0, 'Q2': 137.0, 'Q3': 153.0, 'Q1': 112.0}}, 
+     {'label': '(BS)', 'values': {'whisker_low': 96.0, 'whisker_high': 177.0, 'Q2': 131.0, 'Q3': 155.0, 'Q1': 121.0}}, 
+     {'label': '(DF)', 'values': {'whisker_low': 104.0, 'whisker_high': 154.0, 'Q2': 130.0, 'Q3': 141.0, 'Q1': 124.0}}, 
+     {'label': '(DUMP)', 'values': {'whisker_low': 98.0, 'whisker_high': 158.0, 'Q2': 126.0, 'Q3': 136.0, 'Q1': 115.0}}, 
+     {'label': '(BOB)', 'values': {'whisker_low': 96.0, 'whisker_high': 145.0, 'Q2': 124.0, 'Q3': 128.0, 'Q1': 114.0}}, 
+     {'label': '(WIEN)', 'values': {'whisker_low': 83.0, 'whisker_high': 183.0, 'Q2': 124.0, 'Q3': 139.0, 'Q1': 108.0}}, 
+     {'label': '(PAYN)', 'values': {'whisker_low': 111.0, 'whisker_high': 154.0, 'Q2': 123.0, 'Q3': 134.0, 'Q1': 117.0}}, 
+     {'label': '(WOLF)', 'values': {'whisker_low': 97.0, 'whisker_high': 161.0, 'Q2': 113.0, 'Q3': 140.0, 'Q1': 103.0}}]
+    }
+</script>
+
+</body>
+</html>
