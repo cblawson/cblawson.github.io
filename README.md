@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-This project fetches the fantasy football scores of every team from each week, and then displays a box plot chart of all ten teams.
+This project fetches the fantasy football scores of every team in my ESPN league from each week, and then displays a box plot chart of all ten teams.
 
 The Python code is run each week, collecting the scores from ESPN using nested loops and the BeautifulSoup library.
 Then, the quartiles for the box plot are calculated for each team using the numpy library.
